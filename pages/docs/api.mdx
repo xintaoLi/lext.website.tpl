@@ -1,0 +1,121 @@
+# API 参考
+
+Nextra 提供的 API 和组件参考文档。
+
+## 内置组件
+
+Nextra 提供了一些开箱即用的组件来增强你的文档。
+
+### Callout
+
+用于突出显示重要信息的组件。支持 `info`、`warning`、`error` 等类型。
+
+### Tabs
+
+创建标签页切换内容，适合展示多种编程语言或配置选项。
+
+### Steps
+
+显示步骤列表，适合编写教程和操作指南。
+
+### Cards
+
+创建卡片网格布局，用于组织链接和导航。
+
+### FileTree
+
+显示文件树结构，方便展示项目目录。
+
+## 配置 API
+
+### withNextra()
+
+Nextra 的核心配置函数，用于配置 Next.js 项目。
+
+**参数：**
+
+- `theme` (string) - 主题包名称
+- `themeConfig` (string) - 主题配置文件路径
+- `defaultShowCopyCode` (boolean) - 是否默认显示代码复制按钮
+- `flexsearch` (boolean | object) - 配置搜索功能
+- `staticImage` (boolean) - 是否使用静态图片优化
+
+### 主题配置选项
+
+完整的主题配置选项包括：
+
+**导航栏相关：**
+- `logo` - 显示在导航栏左侧的 Logo
+- `logoLink` - Logo 的链接地址
+- `project` - GitHub 项目链接
+- `chat` - 聊天/Discord 链接
+
+**页面布局：**
+- `sidebar` - 侧边栏配置
+- `toc` - 目录配置
+- `footer` - 页脚内容
+- `banner` - 顶部横幅
+
+**功能开关：**
+- `darkMode` - 是否启用暗色模式
+- `navigation` - 是否显示导航
+- `gitTimestamp` - 是否显示 Git 时间戳
+
+**SEO：**
+- `useNextSeoProps` - SEO 配置函数
+- `head` - Head 标签内容
+
+**样式：**
+- `primaryHue` - 主题主色调（0-360）
+
+## 实用函数
+
+### useConfig()
+
+获取当前页面配置的 Hook，可用于访问页面元数据。
+
+### useMDXComponents()
+
+获取 MDX 组件映射，用于自定义 MDX 渲染。
+
+## MDX 功能
+
+### 代码高亮
+
+Nextra 自动支持语法高亮，支持上百种编程语言。
+
+### 带文件名的代码块
+
+可以为代码块添加文件名显示，增强代码示例的可读性。
+
+### 高亮特定行
+
+支持高亮代码块中的特定行，突出重点内容。
+
+### 导入组件
+
+在 MDX 中可以直接导入和使用 React 组件，实现更丰富的交互。
+
+## 更多信息
+
+访问 [Nextra 官方文档](https://nextra.site/) 了解更多 API 和功能详情。
+
+## 快速参考
+
+常用的 Nextra 组件：
+
+- **Callout** - 提示框组件
+- **Tabs** - 标签页组件
+- **Steps** - 步骤组件
+- **Cards** - 卡片组件
+- **FileTree** - 文件树组件
+
+常用配置项：
+
+- `theme` - 主题选择
+- `themeConfig` - 主题配置文件
+- `primaryHue` - 主题色调
+- `darkMode` - 暗色模式
+- `sidebar` - 侧边栏设置
+
+更多详细用法请参考 [Nextra 文档](https://nextra.site/docs)。

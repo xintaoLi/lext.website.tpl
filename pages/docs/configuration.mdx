@@ -1,0 +1,159 @@
+# 配置
+
+了解如何配置你的 Nextra 站点。
+
+## Next.js 配置
+
+在 `next.config.js` 文件中配置 Next.js 和 Nextra：
+
+```js
+const withNextra = require('nextra')({
+  theme: 'nextra-theme-docs',
+  themeConfig: './theme.config.jsx'
+})
+
+module.exports = withNextra({
+  output: 'export', // 启用静态导出
+  images: {
+    unoptimized: true // 静态导出必需
+  },
+  trailingSlash: true,
+})
+```
+
+### 关键配置项
+
+- **output: 'export'** - 启用静态站点导出
+- **images.unoptimized** - 静态导出时必须设置为 `true`
+- **trailingSlash** - 确保路径末尾有斜杠
+
+## 主题配置
+
+在 `theme.config.jsx` 文件中配置站点外观和功能：
+
+```jsx
+export default {
+  logo: <strong>你的站点名称</strong>,
+  project: {
+    link: 'https://github.com/your-username/your-repo'
+  },
+  docsRepositoryBase: 'https://github.com/your-username/your-repo/tree/main',
+  footer: {
+    text: `你的站点 © ${new Date().getFullYear()}`
+  },
+  primaryHue: 200,
+  sidebar: {
+    defaultMenuCollapseLevel: 1
+  },
+  darkMode: true,
+  gitTimestamp: true
+}
+```
+
+### 主题配置选项
+
+#### logo
+显示在导航栏左侧的 Logo，可以是文本或 React 组件。
+
+```jsx
+logo: <strong>Lext</strong>
+// 或
+logo: (
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <img src="/logo.png" alt="Logo" style={{ height: '24px' }} />
+    <strong style={{ marginLeft: '8px' }}>Lext</strong>
+  </div>
+)
+```
+
+#### project
+GitHub 仓库链接，会在导航栏显示图标。
+
+```jsx
+project: {
+  link: 'https://github.com/your-username/your-repo'
+}
+```
+
+#### primaryHue
+主题主色调（0-360），默认为蓝色（200）。
+
+```jsx
+primaryHue: 200  // 蓝色
+primaryHue: 120  // 绿色
+primaryHue: 0    // 红色
+```
+
+#### sidebar
+侧边栏配置。
+
+```jsx
+sidebar: {
+  defaultMenuCollapseLevel: 1  // 默认折叠级别
+}
+```
+
+#### darkMode
+是否启用暗色模式切换。
+
+```jsx
+darkMode: true  // 启用
+```
+
+#### gitTimestamp
+是否显示页面的最后 Git 更新时间。
+
+```jsx
+gitTimestamp: true  // 显示
+```
+
+## 页面导航配置
+
+在 `_meta.js` 文件中配置页面导航结构：
+
+```js
+export default {
+  index: {
+    title: '首页',
+    type: 'page',
+    display: 'hidden'  // 在侧边栏隐藏
+  },
+  docs: {
+    title: '文档',
+    type: 'page'
+  },
+  blog: {
+    title: '博客',
+    type: 'page'
+  }
+}
+```
+
+### 配置选项
+
+- **title** - 显示的标题
+- **type** - 页面类型（`page`、`menu`、`separator`）
+- **display** - 显示方式（`normal`、`hidden`、`children`）
+
+## 环境变量
+
+你可以使用环境变量来配置不同环境的行为：
+
+```bash
+# .env.local
+NEXT_PUBLIC_SITE_URL=https://lext.website
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+在代码中使用：
+
+```jsx
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+```
+
+## 更多资源
+
+- [Nextra 官方文档](https://nextra.site/)
+- [Next.js 文档](https://nextjs.org/docs)
+- [MDX 文档](https://mdxjs.com/)
+

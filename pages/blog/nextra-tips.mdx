@@ -1,0 +1,290 @@
+---
+title: Nextra 使用技巧
+date: 2025/10/17
+description: 分享一些 Nextra 的实用技巧和最佳实践
+---
+
+# Nextra 使用技巧
+
+*发布日期：2025年10月17日*
+
+在使用 Nextra 构建文档和博客的过程中，我总结了一些实用的技巧和最佳实践，希望对你有所帮助。
+
+## 1. 使用 MDX 增强内容表现力
+
+MDX 允许你在 Markdown 中使用 JSX，这意味着你可以直接在文档中使用 React 组件。
+
+### 示例：自定义提示框
+
+```mdx
+import { Callout } from 'nextra/components'
+
+<Callout type="warning">
+  这是一个警告提示！
+</Callout>
+```
+
+这比纯 Markdown 更灵活，可以创建更丰富的交互体验。
+
+## 2. 合理组织文件结构
+
+使用清晰的文件结构可以让你的站点更易于维护：
+
+```
+pages/
+├── _meta.js          # 主导航
+├── index.jsx         # 首页
+├── docs/
+│   ├── _meta.js      # 文档导航
+│   ├── intro.mdx
+│   └── advanced/
+│       ├── _meta.js
+│       └── tips.mdx
+└── blog/
+    ├── _meta.js
+    └── post-1.mdx
+```
+
+**技巧**：
+- 使用 `_meta.js` 控制导航顺序和标题
+- 相关内容放在同一文件夹下
+- 使用有意义的文件名（URL 友好）
+
+## 3. 优化代码块展示
+
+Nextra 支持多种代码块增强功能：
+
+### 显示文件名
+
+````mdx
+```js filename="app.js"
+console.log('Hello, Nextra!')
+```
+````
+
+### 高亮特定行
+
+````mdx
+```js {1,3-5}
+const name = 'Nextra'
+console.log('Line 2')
+console.log('Line 3')
+console.log('Line 4')
+console.log('Line 5')
+```
+````
+
+### 添加行号
+
+````mdx
+```js showLineNumbers
+function example() {
+  return 'Hello'
+}
+```
+````
+
+## 4. 使用内置组件
+
+Nextra 提供了很多实用的内置组件：
+
+### Steps 组件
+
+适合编写教程和操作步骤：
+
+```mdx
+import { Steps } from 'nextra/components'
+
+<Steps>
+### 第一步
+安装依赖
+
+### 第二步
+配置项目
+
+### 第三步
+启动服务
+</Steps>
+```
+
+### Tabs 组件
+
+展示多种语言或方案：
+
+```mdx
+import { Tabs } from 'nextra/components'
+
+<Tabs items={['npm', 'yarn', 'pnpm']}>
+  <Tabs.Tab>npm install nextra</Tabs.Tab>
+  <Tabs.Tab>yarn add nextra</Tabs.Tab>
+  <Tabs.Tab>pnpm add nextra</Tabs.Tab>
+</Tabs>
+```
+
+### Cards 组件
+
+创建卡片式链接：
+
+```mdx
+import { Cards, Card } from 'nextra/components'
+
+<Cards>
+  <Card title="快速开始" href="/docs/getting-started" />
+  <Card title="配置指南" href="/docs/configuration" />
+</Cards>
+```
+
+## 5. SEO 优化
+
+### 设置页面元数据
+
+在 MDX 文件顶部使用 frontmatter：
+
+```mdx
+---
+title: 页面标题
+description: 页面描述
+date: 2025/10/17
+---
+```
+
+### 配置全局 SEO
+
+在 `theme.config.jsx` 中配置：
+
+```jsx
+export default {
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – 你的站点名',
+      description: '站点描述',
+      openGraph: {
+        type: 'website',
+        locale: 'zh_CN',
+        site_name: '你的站点名'
+      }
+    }
+  }
+}
+```
+
+## 6. 自定义样式
+
+### 使用 CSS Modules
+
+创建 `styles/custom.module.css`：
+
+```css
+.customBox {
+  padding: 1rem;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+}
+```
+
+在 MDX 中使用：
+
+```mdx
+import styles from '../styles/custom.module.css'
+
+<div className={styles.customBox}>
+  自定义样式内容
+</div>
+```
+
+### 全局样式
+
+在 `pages/_app.jsx` 中引入全局样式：
+
+```jsx
+import '../styles/globals.css'
+
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />
+}
+```
+
+## 7. 静态导出优化
+
+如果要部署到 GitHub Pages 等静态托管服务：
+
+```js
+// next.config.js
+module.exports = withNextra({
+  output: 'export',
+  images: {
+    unoptimized: true
+  },
+  trailingSlash: true,
+  // 如果部署在子路径
+  basePath: '/your-repo-name',
+  assetPrefix: '/your-repo-name'
+})
+```
+
+## 8. 搜索功能
+
+Nextra 内置了搜索功能，无需额外配置。如果要自定义：
+
+```jsx
+// theme.config.jsx
+export default {
+  search: {
+    placeholder: '搜索文档...'
+  }
+}
+```
+
+## 9. 国际化 (i18n)
+
+支持多语言很简单：
+
+1. 在 `next.config.js` 配置语言：
+
+```js
+module.exports = {
+  i18n: {
+    locales: ['zh-CN', 'en-US'],
+    defaultLocale: 'zh-CN'
+  }
+}
+```
+
+2. 创建对应语言的文件：
+
+```
+pages/
+├── en-US/
+│   └── docs/
+│       └── intro.mdx
+└── zh-CN/
+    └── docs/
+        └── intro.mdx
+```
+
+## 10. 性能优化技巧
+
+- ✅ 使用静态导出减少服务器负载
+- ✅ 图片使用 WebP 格式
+- ✅ 合理使用代码分割
+- ✅ 启用 Git 时间戳缓存
+- ✅ 优化图片大小和尺寸
+
+## 总结
+
+Nextra 是一个功能强大且易用的文档框架。通过合理使用这些技巧，你可以：
+
+- 创建更美观、更专业的文档
+- 提升用户阅读体验
+- 优化站点性能
+- 简化内容维护
+
+希望这些技巧对你有帮助！如果你有其他问题，欢迎查看[官方文档](https://nextra.site/)或在 GitHub 上提出 Issue。
+
+---
+
+*参考资料：*
+- [Nextra 官方文档](https://nextra.site/)
+- [MDX 文档](https://mdxjs.com/)
+- [Next.js 文档](https://nextjs.org/docs)
+

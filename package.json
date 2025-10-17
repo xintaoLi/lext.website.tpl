@@ -1,0 +1,25 @@
+{
+  "name": "lext.website",
+  "version": "0.1.0",
+  "description": "Lext 知识库和博客站点",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build"
+  },
+  "keywords": [
+    "nextra",
+    "documentation",
+    "blog"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^14.0.0",
+    "nextra": "^2.13.0",
+    "nextra-theme-docs": "^2.13.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
