@@ -1,0 +1,33 @@
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 主角：字母 L -->
+  <path d="M 30 25 L 30 65 Q 30 70, 35 70 L 62 70" stroke="url(#mainGradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- 三个 e -->
+  <circle cx="68" cy="38" r="5.5" fill="url(#dotGrad1)"/>
+  <circle cx="73" cy="53" r="6.5" fill="url(#dotGrad2)"/>
+  <circle cx="68" cy="70" r="5.5" fill="url(#dotGrad3)"/>
+  
+  <!-- 渐变定义 -->
+  <defs>
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="50%" stop-color="#4b5563"/>
+      <stop offset="100%" stop-color="#6b7280"/>
+    </linearGradient>
+    
+    <radialGradient id="dotGrad1">
+      <stop offset="0%" stop-color="#6b7280"/>
+      <stop offset="100%" stop-color="#9ca3af"/>
+    </radialGradient>
+    
+    <radialGradient id="dotGrad2">
+      <stop offset="0%" stop-color="#4b5563"/>
+      <stop offset="100%" stop-color="#6b7280"/>
+    </radialGradient>
+    
+    <radialGradient id="dotGrad3">
+      <stop offset="0%" stop-color="#6b7280"/>
+      <stop offset="100%" stop-color="#9ca3af"/>
+    </radialGradient>
+  </defs>
+</svg>
