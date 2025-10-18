@@ -1,8 +1,12 @@
 import Link from 'next/link'
+import { Zap, Shield, Rocket, Package, BookOpen, PenTool, Wrench, Lightbulb, Target, TrendingUp } from 'lucide-react'
+import HeroBackground from '../components/HeroBackground'
 
 <div className="nx-home-wrapper">
 
 <div className="hero-section">
+
+<HeroBackground />
 
 # 欢迎来到  
 # <span className="gradient-text">Leeext的杂货铺</span>
@@ -26,47 +30,76 @@ import Link from 'next/link'
 <div className="features-grid">
 
 <div className="feature-card">
-
-### 📚 技术文档
-系统化的技术学习笔记，涵盖前端、后端、工具使用等各个方面
-
+<h3><span className="card-icon"><BookOpen size={24} strokeWidth={1.5} /></span>技术文档</h3>
+<p>系统化的技术学习笔记，涵盖前端、后端、工具使用等各个方面</p>
 </div>
 
 <div className="feature-card">
-
-### ✍️ 博客文章
-记录开发心得、踩坑经验、技术思考和项目总结
-
+<h3><span className="card-icon"><PenTool size={24} strokeWidth={1.5} /></span>博客文章</h3>
+<p>记录开发心得、踩坑经验、技术思考和项目总结</p>
 </div>
 
 <div className="feature-card">
-
-### 🛠️ 实用工具
-收集和分享提高效率的开发工具、在线服务和资源链接
-
+<h3><span className="card-icon"><Wrench size={24} strokeWidth={1.5} /></span>实用工具</h3>
+<p>收集和分享提高效率的开发工具、在线服务和资源链接</p>
 </div>
 
 <div className="feature-card">
-
-### 💡 灵感收藏
-有趣的想法、优秀的设计、值得学习的项目和案例
-
+<h3><span className="card-icon"><Lightbulb size={24} strokeWidth={1.5} /></span>灵感收藏</h3>
+<p>有趣的想法、优秀的设计、值得学习的项目和案例</p>
 </div>
 
 <div className="feature-card">
-
-### 🎯 最佳实践
-整理的编码规范、架构设计、性能优化等最佳实践
-
+<h3><span className="card-icon"><Target size={24} strokeWidth={1.5} /></span>最佳实践</h3>
+<p>整理的编码规范、架构设计、性能优化等最佳实践</p>
 </div>
 
 <div className="feature-card">
-
-### 🌱 持续更新
-不断添加新内容，记录成长轨迹，分享学习收获
+<h3><span className="card-icon"><TrendingUp size={24} strokeWidth={1.5} /></span>持续更新</h3>
+<p>不断添加新内容，记录成长轨迹，分享学习收获</p>
+</div>
 
 </div>
 
+</div>
+
+<div className="about-site-section">
+
+<div className="about-header">
+
+## 关于本站技术栈
+
+基于 Nextra 构建的静态文档网站，简单高效
+
+</div>
+
+<div className="about-grid">
+
+<div className="about-card">
+<h3><span className="card-icon"><Zap size={24} strokeWidth={1.5} /></span>极致轻量</h3>
+<p>纯静态资源，低配服务器也能流畅运行，资源占用极少</p>
+</div>
+
+<div className="about-card">
+<h3><span className="card-icon"><Shield size={24} strokeWidth={1.5} /></span>超高安全</h3>
+<p>无后端无数据库，攻击面极小，几乎免疫常见网络攻击</p>
+</div>
+
+<div className="about-card">
+<h3><span className="card-icon"><Rocket size={24} strokeWidth={1.5} /></span>闪电速度</h3>
+<p>直接返回 HTML 文件，无需服务端渲染，访问速度极快</p>
+</div>
+
+<div className="about-card">
+<h3><span className="card-icon"><Package size={24} strokeWidth={1.5} /></span>部署简单</h3>
+<p>一键构建生成静态文件，上传即可，轻松实现自动化部署</p>
+</div>
+
+</div>
+
+<div className="about-actions">
+  <Link href="/about-site" className="about-link">了解更多技术细节 →</Link>
+  <a href="#" className="about-link download">下载站点模板</a>
 </div>
 
 </div>

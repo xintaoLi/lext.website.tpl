@@ -20,6 +20,10 @@ export default {
   blog: {
     title: '博客',
     type: 'page'
+  },
+  'about-site': {
+    title: '关于本站',
+    type: 'page'
   }
 }
 
